@@ -1,0 +1,953 @@
+import type { Mission } from './missions';
+
+// Application-facing data from the maintained knowledge-base mission catalogue.
+// Research record: knowledge/topics/gameplay/discovery-month-missions.md, commit 36f115e.
+export const MISSION_CHECKED_AT = '10 November 2026';
+export const MISSIONS: Mission[] = [
+  {
+    id: '3584e763-182b-4ba3-9de7-4d79ec5935e5',
+    track: 'defense',
+    name: 'Clear Hostiles from Site',
+    points: 167,
+    creditReward: 56750,
+    requirements:
+      'Own transport and FPS combat equipment for a hostile ground site.',
+    notes:
+      'Use 167 points from two community catalogues; wiki and Citadel list 164, a recorded unresolved conflict.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/3584e763-182b-4ba3-9de7-4d79ec5935e5',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Clear Hostiles from Site',
+    category: 'ground combat',
+    unlockPoints: 125,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+    conflicts: [
+      'Wiki/Citadel 164 points versus VerseHub/SC Damage Simulator 167; use 167 provisionally and confirm in-game.',
+    ],
+  },
+  {
+    id: '92804a73-edf7-4dcb-80d5-48b0a3a2fa9e',
+    track: 'transport',
+    name: 'Constellation Rental Offer',
+    points: 250,
+    creditReward: 31000,
+    requirements:
+      'Ship with storage for one Gold Constellation model box; one-time contract.',
+    notes:
+      'Historically grants a five-day Centaurus/Skylark rental. Community tables list 250 Transport points and 31,000 aUEC; guides disagree about availability and its relationship to tracks.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'uncertain',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/92804a73-edf7-4dcb-80d5-48b0a3a2fa9e',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Constellation Rental Offer',
+    category: 'delivery',
+    unlockPoints: 0,
+    availabilityNote:
+      'One-time historical rental mission. VerseHub says removed October 14; other guides still list it. Current availability is unresolved.',
+    onceOnly: true,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'ecf969e3-3fee-43b6-95c0-d440796121f3',
+    track: 'transport',
+    name: 'Courier Run (Exp. E)',
+    points: 417,
+    creditReward: 51500,
+    requirements: 'Own transport with room for three mission packages.',
+    notes:
+      'Collect event supplies and deliver them to an RSI Event Platform. Entry-level briefing describes combat as unlikely.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/ecf969e3-3fee-43b6-95c0-d440796121f3',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Courier Run (Exp. E)',
+    category: 'delivery',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'cd1c1bb6-2269-4965-a6c3-8fcc650404ed',
+    track: 'transport',
+    name: 'Critical Refuel Request',
+    points: 271,
+    creditReward: 33500,
+    requirements:
+      'Refuelling-capable vessel with hydrogen and quantum fuel; combat escort recommended.',
+    notes:
+      'Deliver both fuel types to a vulnerable ship. The briefing recommends another pilot to cover the refueller.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/cd1c1bb6-2269-4965-a6c3-8fcc650404ed',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Critical Refuel Request ([Ship])',
+    category: 'refueling',
+    unlockPoints: 208,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'f4ea9291-e218-4baa-9fb6-e9f7c2a3c06b',
+    track: 'defense',
+    name: 'Eliminate Known Outlaw',
+    points: 125,
+    creditReward: 33750,
+    requirements: 'Own transport and FPS combat equipment for a ground target.',
+    notes:
+      'Entry ground-combat contract. Completing it contributes Defense progress used to unlock later options.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/f4ea9291-e218-4baa-9fb6-e9f7c2a3c06b',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Eliminate Known Outlaw',
+    category: 'ground combat',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'b1a33d46-40d6-41be-a5d0-acf4fa9a4f90',
+    track: 'transport',
+    name: 'High Value Package Retrieval Op',
+    points: 333,
+    creditReward: 66250,
+    requirements:
+      'Own transport, FPS combat equipment, and room for three mission packages; backup recommended.',
+    notes:
+      'Recover stolen shipments from a hostile ground hideout. The briefing recommends armed backup.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/b1a33d46-40d6-41be-a5d0-acf4fa9a4f90',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: High Value Package Retrieval Op',
+    category: 'ground combat',
+    unlockPoints: 626,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '44cdae98-2ad6-4efe-8e27-d2bcadf4caf8',
+    track: 'transport',
+    name: 'Important Supply Haul',
+    points: 625,
+    creditReward: 124000,
+    requirements:
+      '320 SCU total: 128 SCU in boxes up to 16 SCU, plus 192 SCU in boxes up to 8 SCU; handheld tractor beam.',
+    notes:
+      'Cargo orders total 320 SCU, despite the briefing mentioning 16 SCU container capacity. The guide reports an approximately 18-minute completed run.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/44cdae98-2ad6-4efe-8e27-d2bcadf4caf8',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Important Supply Haul',
+    category: 'hauling',
+    unlockPoints: 417,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: {
+      min: 18,
+      max: 18,
+    },
+    conflicts: [
+      'Briefing 16 SCU is individual container size; actual cargo orders total 320 SCU.',
+      'Guide says one easy mission unlocks it; structured prerequisite threshold 417 points is more specific.',
+    ],
+  },
+  {
+    id: '701271ba-964f-4738-b489-1f38d9c40c4a',
+    track: 'transport',
+    name: 'Ling Small Haul',
+    points: 354,
+    creditReward: 66750,
+    requirements:
+      '8 SCU total: 4 SCU + 2 SCU + 2 SCU boxes. Ship must fit 4 SCU containers; handheld tractor beam recommended.',
+    notes:
+      'Deliver party supplies using freight elevators or autoloading. Compare full cargo volume with individual container size.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/701271ba-964f-4738-b489-1f38d9c40c4a',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Ling Small Haul',
+    category: 'hauling',
+    unlockPoints: 417,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '77dcf334-d868-497a-a781-de8f850dd48d',
+    track: 'transport',
+    name: 'Ling Supply Delivery',
+    points: 417,
+    creditReward: 78500,
+    requirements:
+      '114 SCU total; containers up to 24 SCU. Ship must fit 24 SCU boxes; handheld tractor beam.',
+    notes:
+      'Larger party-supply haul. A 24 SCU container requirement does not mean the whole load is only 24 SCU.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/77dcf334-d868-497a-a781-de8f850dd48d',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Ling Supply Delivery',
+    category: 'hauling',
+    unlockPoints: 354,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '4c35e397-de59-4fe8-9f06-5d2f497144f4',
+    track: 'defense',
+    name: 'Orange Lvl. - Conduct Security Sweep',
+    points: 333,
+    creditReward: 106000,
+    requirements: 'Combat-capable ship for a space security sweep.',
+    notes:
+      'Higher-level space patrol; check the in-game briefing for contacts and current opposition.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/4c35e397-de59-4fe8-9f06-5d2f497144f4',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Orange Lvl. - Conduct Security Sweep',
+    category: 'ship combat',
+    unlockPoints: 250,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '389ad365-3f45-4639-94d5-bad05a22b9f4',
+    track: 'defense',
+    name: 'Orange Lvl. - Defend Ship',
+    points: 208,
+    creditReward: 70750,
+    requirements: 'Combat-capable ship to protect a friendly vessel.',
+    notes: 'Protect the client ship from attacking forces.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/389ad365-3f45-4639-94d5-bad05a22b9f4',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Orange Lvl. - Defend Ship',
+    category: 'ship combat',
+    unlockPoints: 146,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '32ce3076-6a43-4523-9aef-cc59444e47d6',
+    track: 'defense',
+    name: 'Orange Lvl. - Neutralize Threats',
+    points: 417,
+    creditReward: 179500,
+    requirements:
+      'Combat-capable ship for a higher-level space patrol and threat response.',
+    notes:
+      'Another 417-point Defense option; it unlocks later than RSI Ship Under Attack.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/32ce3076-6a43-4523-9aef-cc59444e47d6',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Orange Lvl. - Neutralize Threats',
+    category: 'ship combat',
+    unlockPoints: 333,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '4b6abcdc-f11e-4870-aa28-9546f32abb7e',
+    track: 'defense',
+    name: 'Orange Lvl. - RSI Ship Under Attack',
+    points: 417,
+    creditReward: 191750,
+    requirements:
+      'Strong combat ship; a crew is recommended by the guide for heavy-fighter opposition.',
+    notes:
+      'Community guide describes heavy fighters and a damaged friendly ship; bring strong combat capability and preferably gunners.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/4b6abcdc-f11e-4870-aa28-9546f32abb7e',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Orange Lvl. - RSI Ship Under Attack',
+    category: 'ship combat',
+    unlockPoints: 208,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'bb97936d-1955-42a6-9e87-f9a31fa1c258',
+    track: 'transport',
+    name: 'Package Recovery (Exp. E)',
+    points: 313,
+    creditReward: 46000,
+    requirements:
+      'Own transport and room for one recovered package; light ship combat possible.',
+    notes:
+      'Retrieve a package from a derelict RSI ship, then deliver it to an RSI Event Platform.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/bb97936d-1955-42a6-9e87-f9a31fa1c258',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Package Recovery (Exp. E)',
+    category: 'ship combat',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '48873cf2-04a8-4539-8d96-d16766045d1f',
+    track: 'transport',
+    name: 'Package Recovery (Exp. JR)',
+    points: 313,
+    creditReward: 54250,
+    requirements:
+      'Own transport and room for one recovered package; prepare for ship combat.',
+    notes:
+      'Recover a lost package from a derelict ship. The junior briefing warns of possible hostile encounters.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/48873cf2-04a8-4539-8d96-d16766045d1f',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Package Recovery (Exp. JR)',
+    category: 'ship combat',
+    unlockPoints: 313,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '987cbdc8-4ee9-466f-99d7-054dcebe84e2',
+    track: 'transport',
+    name: 'Package Recovery (Exp. S)',
+    points: 313,
+    creditReward: 66500,
+    requirements:
+      'Own transport and room for one recovered package; stronger ship combat readiness.',
+    notes:
+      'Seasoned package recovery uses the same point award as the entry contract but has a higher credit payout and combat risk.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/987cbdc8-4ee9-466f-99d7-054dcebe84e2',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Package Recovery (Exp. S)',
+    category: 'ship combat',
+    unlockPoints: 626,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '7008583a-f7cd-440b-badd-c6b2f7c9520f',
+    track: 'collection',
+    name: 'Procure Refined Beryl',
+    points: 669,
+    creditReward: 176500,
+    requirements:
+      '8 SCU refined Beryl; mining ship, refinery processing, and delivery capacity.',
+    notes:
+      'Can be mined alongside Iron at Wala according to the guide; refine before delivery and avoid excess hand-ins.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/7008583a-f7cd-440b-badd-c6b2f7c9520f',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Procure Refined Beryl',
+    category: 'mining',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '833c8dd1-071f-4dff-9685-5cb5e55a153b',
+    track: 'collection',
+    name: 'Procure Refined Iron',
+    points: 408,
+    creditReward: 85500,
+    requirements:
+      '6 SCU refined Iron; mining ship, refinery processing, and delivery capacity.',
+    notes:
+      'Refine before hand-in. The briefing warns that excess delivered material will not be returned.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/833c8dd1-071f-4dff-9685-5cb5e55a153b',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Procure Refined Iron',
+    category: 'mining',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'a67cdd1d-1d02-4303-b28b-557b5a2ba5df',
+    track: 'collection',
+    name: 'Procure Refined Quantainium',
+    points: 1142,
+    creditReward: 317250,
+    requirements:
+      '4 SCU refined Quantainium; mining ship, refinery processing, and delivery capacity.',
+    notes:
+      'Largest listed Collection point award. Community guides report that party sharing divides only the Overall contribution.',
+    groupBehaviour:
+      'Community reports: full activity-track points per participant; Overall contribution is divided across party members.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/a67cdd1d-1d02-4303-b28b-557b5a2ba5df',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Procure Refined Quantainium',
+    category: 'mining',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: true,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'f7d35419-10bc-4ec0-8ff0-173cf48b1f2d',
+    track: 'transport',
+    name: 'Recover Package from Hijackers',
+    points: 313,
+    creditReward: 62000,
+    requirements:
+      'Own transport, FPS combat equipment, and room for two mission packages.',
+    notes:
+      'Retrieve shipments from a hostile ground location before returning them to an RSI Event Platform.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/f7d35419-10bc-4ec0-8ff0-173cf48b1f2d',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Recover Package from Hijackers',
+    category: 'ground combat',
+    unlockPoints: 313,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '273723f0-3bdf-48a4-8e7f-e4fc91f114de',
+    track: 'transport',
+    name: 'Recover Package from Site',
+    points: 313,
+    creditReward: 60000,
+    requirements:
+      'Own transport, FPS combat equipment, and room for one mission package.',
+    notes:
+      'Recover an event shipment from an outlaw-held site and deliver it to an RSI Event Platform.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/273723f0-3bdf-48a4-8e7f-e4fc91f114de',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Recover Package from Site',
+    category: 'ground combat',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '5c6307e2-c769-4242-bea0-37b7c885920b',
+    track: 'transport',
+    name: 'Refuel Request',
+    points: 104,
+    creditReward: 13000,
+    requirements:
+      'Refuelling-capable vessel and hydrogen fuel; requested amount and client fuel payment vary.',
+    notes:
+      'Deliver hydrogen to a stranded client. The listed service fee is separate from the per-SCU fuel payment.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/5c6307e2-c769-4242-bea0-37b7c885920b',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Refuel Request ([Ship])',
+    category: 'refueling',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '8560ed8c-80a9-446c-83d5-f691b9085ec6',
+    track: 'transport',
+    name: 'Relay Race',
+    points: 250,
+    creditReward: 31000,
+    requirements: 'Ship with storage for one Gold Constellation model box.',
+    notes:
+      'Carry a Gold Constellation box between RSI Event Platforms, according to the mission briefing. VerseHub instead describes a landing-zone destination.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/8560ed8c-80a9-446c-83d5-f691b9085ec6',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Relay Race',
+    category: 'delivery',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '70630c85-c2e2-4c06-bc33-ee624e4933e8',
+    track: 'collection',
+    name: 'Scavenger Hunt',
+    points: 250,
+    creditReward: null,
+    requirements:
+      'One promotional Constellation Mk IV Andromeda model box; unreleased/removed mission.',
+    notes:
+      'Raw API marks not_for_release=true/released=false. The guide author reports removal for LIVE; keep separate from playable options.',
+    groupBehaviour: 'Not applicable to an unreleased historical mission.',
+    availability: 'removed',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/70630c85-c2e2-4c06-bc33-ee624e4933e8',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Scavenger Hunt',
+    category: 'delivery',
+    unlockPoints: 0,
+    availabilityNote:
+      'Unreleased in 4.10.2 API and community-reported removed from LIVE. Historical record only.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '72d73d7b-0fe9-4d5e-9d32-2438d3bba8db',
+    track: 'defense',
+    name: 'Take Out Gang Leader',
+    points: 313,
+    creditReward: 117750,
+    requirements:
+      'Own transport and FPS combat equipment; neutralise the gang leader.',
+    notes:
+      'Ground-combat alternative to ship combat. Community and API prerequisite data both list 167 Defense points.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/72d73d7b-0fe9-4d5e-9d32-2438d3bba8db',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Take Out Gang Leader',
+    category: 'ground combat',
+    unlockPoints: 167,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'bd738850-3362-4306-b7f9-caa791982cf9',
+    track: 'collection',
+    name: 'UCM Order (L)',
+    points: 486,
+    creditReward: 101750,
+    requirements:
+      '250 SCU Construction Salvage; Aegis Reclaimer and handheld tractor beam.',
+    notes:
+      'The source describes a Polaris wreck. Community measured runs are 8-10 minutes; that estimate differs from the game-data budget.',
+    groupBehaviour:
+      'Community reports: full activity-track points per participant; Overall contribution is divided across party members.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/bd738850-3362-4306-b7f9-caa791982cf9',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: UCM Order (L)',
+    category: 'salvage',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: true,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: {
+      min: 8,
+      max: 10,
+    },
+  },
+  {
+    id: '950242fe-e25d-4e64-b621-860e4305c6f1',
+    track: 'collection',
+    name: 'UCM Order (M)',
+    points: 255,
+    creditReward: 42250,
+    requirements:
+      '39 SCU Construction Pieces; Argo MOTH and handheld tractor beam.',
+    notes:
+      "Medium salvage is 255 points, not the 486 stated in the Starter Guide's combined large/medium row. Deliver pieces to a Lagrange-station freight elevator.",
+    groupBehaviour:
+      'Community reports: full activity-track points per participant; Overall contribution is divided across party members.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/950242fe-e25d-4e64-b621-860e4305c6f1',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: UCM Order (M)',
+    category: 'salvage',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: true,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '90ad94c4-514d-4a5d-a301-f86b2a835710',
+    track: 'collection',
+    name: 'UCM Order (S)',
+    points: 183,
+    creditReward: 30250,
+    requirements:
+      '1 SCU Construction Rubble; small salvage ship (Salvation, Vulture, or Fortune) and handheld tractor beam.',
+    notes:
+      'Disintegrate the supplied small wreck and deliver rubble; collected RMC may be kept. Community sources identify a Mantis wreck.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/90ad94c4-514d-4a5d-a301-f86b2a835710',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: UCM Order (S)',
+    category: 'salvage',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '1810871f-6ab7-4c47-92e9-64b9f889598d',
+    track: 'transport',
+    name: 'Urgent Refuel Request',
+    points: 104,
+    creditReward: 13000,
+    requirements:
+      'Refuelling-capable vessel and quantum fuel; prepare for possible threats. Fuel amount varies.',
+    notes:
+      'Quantum-fuel-only request. Community catalogues report 104 points and a 13,000 aUEC service fee; the raw API omits rewards.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/1810871f-6ab7-4c47-92e9-64b9f889598d',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://subliminal.gg/missions/Iasi_Refueling_Stanton_Quantum_1L_Medium',
+    ],
+    fullName: 'RSI Disc. Month: Urgent Refuel Request ([Ship])',
+    category: 'refueling',
+    unlockPoints: 104,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: true,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: '628b1a52-78ba-4487-ad29-b8a1227600a9',
+    track: 'defense',
+    name: 'Yellow Lvl. - Patrol System',
+    points: 250,
+    creditReward: 58750,
+    requirements: 'Combat-capable ship for a multi-location space patrol.',
+    notes: 'Visit assigned space locations and deal with hostile contacts.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/628b1a52-78ba-4487-ad29-b8a1227600a9',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+    ],
+    fullName: 'RSI Disc. Month: Yellow Lvl. - Patrol System',
+    category: 'ship combat',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: null,
+  },
+  {
+    id: 'ccb38c0d-438d-4c79-b09d-f2834463b42b',
+    track: 'defense',
+    name: 'Yellow Lvl. - Support Ship',
+    points: 146,
+    creditReward: 44750,
+    requirements:
+      'Combat-capable ship; community guide describes two starter-class hostiles.',
+    notes:
+      'Community guide estimates about 5 minutes per run. This is a measured estimate, not the game-data time budget.',
+    groupBehaviour:
+      'Community reports: full activity-track and Overall points per participant; verify actual mission sharing in-game.',
+    availability: 'reported',
+    sources: [
+      'https://api.star-citizen.wiki/api/missions/ccb38c0d-438d-4c79-b09d-f2834463b42b',
+      'https://starcitizen.tools/RSI_Discovery_Event',
+      'https://versehub.space/events/discovery-month',
+      'https://sc-damage-simulator.com/events',
+      'https://citizen-starter-guide.com/star-citizen-rsi-discovery-month-event-guide/',
+    ],
+    fullName: 'RSI Disc. Month: Yellow Lvl. - Support Ship',
+    category: 'ship combat',
+    unlockPoints: 0,
+    availabilityNote:
+      'Reported 4.10.2 catalogue; released=true in community game-data API. Event activation/current player-board visibility not verified on 2026-11-10.',
+    onceOnly: false,
+    sharingConflict: false,
+    overallSplit: false,
+    gameBuild: '4.10.2-LIVE.12881860',
+    measuredMinutes: {
+      min: 5,
+      max: 5,
+    },
+  },
+];

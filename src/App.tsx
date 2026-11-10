@@ -7,16 +7,16 @@ import {
   nextReward,
   OVERALL_REWARDS,
   parseProgress,
-  runsToCap,
   STORAGE_KEY,
   TOTAL_CAP,
   totalProgress,
   TRACKS,
-  TRACK_CAP,
   type Progress,
   type TrackId,
 } from './event';
 import Icon from './Icon';
+import MissionCatalogue from './MissionCatalogue';
+import { MISSIONS, MISSION_CHECKED_AT } from './missionData';
 import ProgressHeader from './ProgressHeader';
 import TrackCard from './TrackCard';
 import STYLES from './App.module.css';
@@ -208,141 +208,6 @@ function OverallProgress({ progress }: { progress: Progress }) {
   );
 }
 
-type CompleteContract = (id: TrackId, points: number) => void;
-
-function ContractButton({
-  name,
-  points,
-  complete,
-  onClick,
-}: {
-  name: string;
-  points: number;
-  complete: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={STYLES.contractButton}
-      aria-label={`Log ${name} completion`}
-      disabled={complete}
-      onClick={onClick}
-    >
-      <Icon name="check" />
-      {complete ? 'Track complete' : 'Log completion'}
-      <span>+{formatPoints(points)} pts</span>
-    </button>
-  );
-}
-
-function ContractGuide({
-  progress,
-  onComplete,
-}: {
-  progress: Progress;
-  onComplete: CompleteContract;
-}) {
-  const [lastCompletion, setLastCompletion] = useState('');
-  const logCompletion = (id: TrackId, name: string, points: number) => {
-    const added = Math.min(points, TRACK_CAP - progress[id]);
-
-    onComplete(id, points);
-    setLastCompletion(
-      `${name} logged. Added ${formatPoints(added)} ${id} points; track now ${formatPoints(progress[id] + added)} / 10,000.`,
-    );
-  };
-
-  return (
-    <section
-      id="contracts"
-      className={STYLES.contractSection}
-      aria-labelledby="contracts-title"
-    >
-      <div className={STYLES.sectionHeading}>
-        <div>
-          <h2 id="contracts-title">A route for every pilot</h2>
-          <p>
-            Log a completed contract to add its points. Runs remaining update
-            with your progress.
-          </p>
-        </div>
-        <span>Estimates, not mission timers</span>
-      </div>
-      <div className={STYLES.contractGrid}>
-        {TRACKS.map((track) => (
-          <div
-            key={track.id}
-            className={STYLES.contractColumn}
-            style={
-              { '--track-color': `var(--color-${track.id})` } as CSSProperties
-            }
-          >
-            <h3>
-              <Icon name={track.id} />
-              {track.name}
-            </h3>
-            {track.contracts.map((contract) => (
-              <article className={STYLES.contract} key={contract.name}>
-                <span className={STYLES.contractLabel}>{contract.label}</span>
-                <h4>{contract.name}</h4>
-                <div className={STYLES.contractStats}>
-                  <strong>
-                    {formatPoints(contract.points)} <small>pts / run</small>
-                  </strong>
-                  <span>
-                    <b>{runsToCap(progress[track.id], contract.points)}</b> runs
-                    left
-                  </span>
-                </div>
-                <p>{contract.notes}</p>
-                <ContractButton
-                  name={contract.name}
-                  points={contract.points}
-                  complete={progress[track.id] === TRACK_CAP}
-                  onClick={() =>
-                    logCompletion(track.id, contract.name, contract.points)
-                  }
-                />
-              </article>
-            ))}
-            {track.id === 'collection' && (
-              <div className={STYLES.ironNote}>
-                Iron alone: 408 pts / run, {runsToCap(progress.collection, 408)}{' '}
-                runs left. Beryl + Iron together: 1,077 pts per pair,{' '}
-                {runsToCap(progress.collection, 1077)} pairs left.
-                <span className={STYLES.contractLabel}>Iron</span>
-                <ContractButton
-                  name="Iron"
-                  points={408}
-                  complete={progress.collection === TRACK_CAP}
-                  onClick={() => logCompletion('collection', 'Iron', 408)}
-                />
-                <span className={STYLES.contractLabel}>Beryl + Iron pair</span>
-                <ContractButton
-                  name="Beryl + Iron pair"
-                  points={1077}
-                  complete={progress.collection === TRACK_CAP}
-                  onClick={() =>
-                    logCompletion('collection', 'Beryl + Iron pair', 1077)
-                  }
-                />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      <p
-        className={STYLES.completionStatus}
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {lastCompletion}
-      </p>
-    </section>
-  );
-}
-
 function FieldNotes() {
   return (
     <section
@@ -361,20 +226,25 @@ function FieldNotes() {
           <span className={STYLES.rentalIcon}>
             <Icon name="star" />
           </span>
-          <span className={STYLES.rentalTag}>Outside the reward tracks</span>
-          <h3>Take the next generation for a spin.</h3>
+          <span className={STYLES.rentalTag}>Historical one-time offer</span>
+          <h3>A five-day test flight.</h3>
           <p>
-            Find the gold box for the{' '}
-            <strong>Constellation Rental Offer</strong>. Deliver it between RSI
-            Event Platforms for a{' '}
-            <strong>five-day Constellation Mk V Centaurus rental</strong>.
+            The <strong>Constellation Rental Offer</strong> described delivering
+            a gold box between RSI Event Platforms for a{' '}
+            <strong>
+              five-day Constellation Mk V Centaurus and Skylark rental
+            </strong>
+            .
           </p>
           <p>
-            Any ship with storage can carry it. No completed track required.
+            Community tables list 250 Transport points, while an older guide
+            describes it outside progression. Availability is disputed: one
+            source reports removal on 14 October. Check for the actual offer
+            in-game; the mission record does not establish a current rental.
           </p>
           <div className={STYLES.rentalFoot}>
             <span>5 days</span>
-            <span>One delivery. A new constellation.</span>
+            <span>Historical rental duration</span>
           </div>
         </aside>
         <div className={STYLES.notes}>
@@ -396,27 +266,27 @@ function FieldNotes() {
           <details>
             <summary>Should I bring a crew?</summary>
             <p>
-              The guide reports 24 shareable Transport and Defense contracts
-              paying each participant in full on both tracks. Beryl and Iron
-              also pay in full. The three Collection exceptions above divide
-              only Overall points, not individual Collection progress.
+              Community guides report full activity and Overall points on shared
+              Transport and Defense contracts, plus Beryl and Iron. Game-data
+              shareability flags conflict with those reports for some missions;
+              confirm sharing in mobiGlas. The three Collection exceptions above
+              reportedly divide only Overall contributions.
             </p>
           </details>
           <details>
             <summary>Where do I start with a small ship?</summary>
             <p>
-              Look for RSI Event Platforms across Stanton and take event
-              contracts in mobiGlas. The guide lists an Avenger Titan rental
-              from approximately 27,000 aUEC/day at Area18 or Orison. Its 8 SCU
-              covers Ling Small Haul; it can also take you to the ground mission
-              Take Out A Gang Leader (313 points).
+              Courier Run (Exp. E) and Package Recovery (Exp. E) have reported
+              zero-point unlock thresholds and small package requirements.
+              Recover Package from Site is a ground-combat alternative. Compare
+              the catalogue's cargo and equipment requirements before choosing.
             </p>
             <p>
-              Start Defense with Eliminate Known Outlaw, Yellow Lvl. Patrol
-              System, or Yellow Lvl. Support Ship to unlock more contracts. For
-              Important Supply Haul, the author’s update recommends first
-              finishing one easy Transport or Collection contract, such as
-              Package Recovery.
+              Eliminate Known Outlaw, Yellow Lvl. - Patrol System, and Yellow
+              Lvl. - Support Ship are reported entry Defense missions. Important
+              Supply Haul has a reported 417-point Transport unlock threshold;
+              the older advice to complete any one easy contract is less
+              precise.
             </p>
           </details>
           <details>
@@ -578,7 +448,11 @@ export default function App() {
               </p>
             </div>
             <div className={STYLES.trackerActions}>
-              <span className={STYLES.saveStatus} role="status">
+              <span
+                className={STYLES.saveStatus}
+                role="status"
+                aria-label="Progress storage"
+              >
                 {saveStatus}
               </span>
               {resetPending ? (
@@ -629,7 +503,9 @@ export default function App() {
             </span>
           </p>
         </section>
-        <ContractGuide
+        <MissionCatalogue
+          missions={MISSIONS}
+          checkedAt={MISSION_CHECKED_AT}
           progress={progress}
           onComplete={(id, points) =>
             updateTrack(id, clampPoints(progress[id] + points))
@@ -646,12 +522,11 @@ export default function App() {
           </div>
           <div>
             <a href={GUIDE_URL} target="_blank" rel="noreferrer">
-              Event information by Citizen Starter Guide{' '}
-              <Icon name="external" />
+              Original guide by Citizen Starter Guide <Icon name="external" />
             </a>
             <p>
-              Guide checked 10 November 2026. Contracts, rewards, and prices may
-              change with patches.
+              Sources checked 10 November 2026. Mission catalogue: Alpha 4.10.2,
+              not verified live availability. Details may change with patches.
               <br />
               Timings and rental prices are community estimates; confirm
               in-game.

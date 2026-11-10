@@ -1,5 +1,110 @@
 import { expect, test } from '@playwright/test';
 
+test('mission catalogue filters the full range and logs a newly added mission', async ({
+  page,
+}, testInfo) => {
+  await page.goto('/');
+  const catalogue = page.getByRole('region', { name: 'Mission catalogue' });
+  const results = catalogue.getByRole('status', { name: 'Mission results' });
+  const search = catalogue.getByRole('searchbox', { name: 'Find a mission' });
+
+  await expect(results).toHaveText('29 missions shown');
+  await expect(catalogue.getByRole('article')).toHaveCount(29);
+  await catalogue.evaluate((section) =>
+    section.scrollIntoView({ behavior: 'instant', block: 'start' }),
+  );
+  await page.screenshot({ path: testInfo.outputPath('catalogue-desktop.png') });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await catalogue.evaluate((section) =>
+    section.scrollIntoView({ behavior: 'instant', block: 'start' }),
+  );
+  await page.screenshot({ path: testInfo.outputPath('catalogue-mobile.png') });
+  await search.fill('UCM');
+  await expect(results).toHaveText('3 missions shown');
+  const medium = catalogue.getByRole('article', {
+    name: 'UCM Order (M)',
+    exact: true,
+  });
+
+  await expect(medium.getByText('255 pts', { exact: true })).toBeVisible();
+  await expect(medium.getByText(/39 SCU Construction Pieces/)).toBeVisible();
+  await medium.getByText('Mission details', { exact: true }).click();
+  await expect(medium.getByText(/Listed fee: 42,250 aUEC/)).toBeVisible();
+  await expect(
+    medium.getByText(/Overall contribution is divided/),
+  ).toBeVisible();
+  await expect(
+    medium.locator('a[href="https://versehub.space/events/discovery-month"]'),
+  ).toBeVisible();
+  await medium
+    .getByRole('button', { name: 'Log UCM Order (M) completion' })
+    .click();
+  await expect(
+    page.getByRole('slider', { name: 'Collection progress' }),
+  ).toHaveValue('255');
+  await expect(
+    page.getByRole('progressbar', { name: 'Overall progress', exact: true }),
+  ).toHaveAttribute('aria-valuenow', '255');
+  await search.fill('');
+  await catalogue
+    .getByRole('combobox', { name: 'Pursuit' })
+    .selectOption('transport');
+  await expect(results).toHaveText('14 missions shown');
+  await search.fill('320 SCU');
+  await expect(results).toHaveText('1 mission shown');
+  await expect(
+    catalogue.getByRole('heading', {
+      name: 'Important Supply Haul',
+      exact: true,
+    }),
+  ).toBeVisible();
+  await search.fill('nothing-matches-this');
+  await expect(
+    catalogue.getByRole('heading', { name: 'No missions match your filters' }),
+  ).toBeVisible();
+  await catalogue.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(results).toHaveText('29 missions shown');
+});
+
+test('uncertain and historical records are opt-in and unreleased missions cannot add points', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const catalogue = page.getByRole('region', { name: 'Mission catalogue' });
+
+  await expect(
+    catalogue.getByRole('article', { name: 'Scavenger Hunt', exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    catalogue.getByRole('article', {
+      name: 'Constellation Rental Offer',
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  await catalogue
+    .getByRole('checkbox', { name: 'Include uncertain / historical records' })
+    .check();
+  await expect(
+    catalogue.getByRole('status', { name: 'Mission results' }),
+  ).toHaveText('31 missions shown');
+  const scavenger = catalogue.getByRole('article', {
+    name: 'Scavenger Hunt',
+    exact: true,
+  });
+
+  await expect(
+    scavenger.getByText('Historical / removed', { exact: true }),
+  ).toBeVisible();
+  await expect(
+    scavenger.getByRole('button', { name: 'Log Scavenger Hunt completion' }),
+  ).toBeDisabled();
+  await expect(
+    catalogue
+      .getByRole('article', { name: 'Constellation Rental Offer', exact: true })
+      .getByText('Availability uncertain', { exact: true }),
+  ).toBeVisible();
+});
+
 for (const width of [1440, 390, 320]) {
   test(`persistent progress header follows scrolling and contract updates at ${width}px`, async ({
     page,
@@ -56,11 +161,14 @@ for (const width of [1440, 390, 320]) {
       })
       .click();
     await page
-      .getByRole('button', { name: 'Log Beryl completion', exact: true })
+      .getByRole('button', {
+        name: 'Log Procure Refined Beryl completion',
+        exact: true,
+      })
       .click();
     await page
       .getByRole('button', {
-        name: 'Log Yellow Lvl. Support Ship completion',
+        name: 'Log Yellow Lvl. - Support Ship completion',
         exact: true,
       })
       .click();
@@ -191,11 +299,11 @@ test('completed contracts add their awards to the matching track and save the to
   const contracts = [
     ['Important Supply Haul', 'transport', 625],
     ['Package Recovery (Exp. E)', 'transport', 313],
-    ['Beryl', 'collection', 669],
+    ['Procure Refined Beryl', 'collection', 669],
     ['UCM Order (L)', 'collection', 486],
-    ['Orange Lvl. RSI Ship Under Attack', 'defense', 417],
-    ['Yellow Lvl. Support Ship', 'defense', 146],
-    ['Iron', 'collection', 408],
+    ['Orange Lvl. - RSI Ship Under Attack', 'defense', 417],
+    ['Yellow Lvl. - Support Ship', 'defense', 146],
+    ['Procure Refined Iron', 'collection', 408],
     ['Beryl + Iron pair', 'collection', 1077],
   ] as const;
 
@@ -287,7 +395,10 @@ test('contract completion updates tiers and caps progress at 10,000', async ({
     ),
   ).toBeVisible();
   await expect(
-    page.getByRole('button', { name: 'Log Beryl completion', exact: true }),
+    page.getByRole('button', {
+      name: 'Log Procure Refined Beryl completion',
+      exact: true,
+    }),
   ).toBeEnabled();
   await page.getByRole('button', { name: 'Reset Transport to zero' }).click();
   await expect(completeHaul).toBeEnabled();
@@ -385,7 +496,7 @@ test('all four tiers complete and remaining runs reach zero', async ({
   await expect(
     page.getByText('Track complete. Every tier reached.'),
   ).toHaveCount(3);
-  await expect(page.getByText('0 runs left', { exact: true })).toHaveCount(6);
+  await expect(page.getByText('0 runs left', { exact: true })).toHaveCount(29);
 });
 
 test('corrupt storage recovers and unavailable storage keeps the tracker usable', async ({
@@ -408,7 +519,9 @@ test('corrupt storage recovers and unavailable storage keeps the tracker usable'
     });
   });
   await page.reload();
-  await expect(page.getByRole('status')).toContainText('Storage unavailable');
+  await expect(
+    page.getByRole('status', { name: 'Progress storage' }),
+  ).toContainText('Storage unavailable');
   await page
     .getByRole('button', { name: 'Set Defense to tier 1, 2,000 points' })
     .click();

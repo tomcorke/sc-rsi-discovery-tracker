@@ -7,19 +7,12 @@ export const STORAGE_KEY = 'rsi-discovery-progress-v1';
 export type TrackId = 'transport' | 'collection' | 'defense';
 export type Progress = Record<TrackId, number>;
 export type Reward = { points: number; items: string[] };
-export type Contract = {
-  name: string;
-  points: number;
-  label: string;
-  notes: string;
-};
 export type Track = {
   id: TrackId;
   name: string;
   specialty: string;
   description: string;
   rewards: Reward[];
-  contracts: Contract[];
 };
 
 export const EMPTY_PROGRESS: Progress = {
@@ -71,22 +64,6 @@ export const TRACKS: Track[] = [
       { points: 6_500, items: ['BriskAir IC-30 cooler'] },
       { points: 10_000, items: ['MaxLift-II Keelback tractor beam'] },
     ],
-    contracts: [
-      {
-        name: 'Important Supply Haul',
-        points: 625,
-        label: 'Cargo route',
-        notes:
-          '320 SCU required: Hull B or Railen. About 18 minutes per run (2,083 pts/hour). The guide lists a Hull B at 7,541,100 aUEC from New Deal, Lorville; no rental in this cargo class.',
-      },
-      {
-        name: 'Package Recovery (Exp. E)',
-        points: 313,
-        label: 'Accessible alternative',
-        notes:
-          'Recover a 1 SCU box from a crash site. No specific hull required. Be ready for starter ships and light fighters.',
-      },
-    ],
   },
   {
     id: 'collection',
@@ -102,22 +79,6 @@ export const TRACKS: Track[] = [
       { points: 6_500, items: ['Delphi RS-30 radar'] },
       { points: 10_000, items: ['Cambio-II Glacier SRT'] },
     ],
-    contracts: [
-      {
-        name: 'Beryl',
-        points: 669,
-        label: 'Crew-friendly mining',
-        notes:
-          'Deliver 8 SCU of refined Beryl. Pair with Iron: 6 SCU earns 408 points. Mine both at Wala and refine before delivery. Neither contract divides points between party members.',
-      },
-      {
-        name: 'UCM Order (L)',
-        points: 486,
-        label: 'Fast solo salvage',
-        notes:
-          'Reclaimer required. Disintegrate the hull; scraping is unnecessary. The guide estimates 8–10 minutes per large order, around 3,000 pts/hour. Medium orders use a MOTH (listed rental: 223,256 aUEC/day). Shared medium and large orders divide Overall contributions only.',
-      },
-    ],
   },
   {
     id: 'defense',
@@ -132,22 +93,6 @@ export const TRACKS: Track[] = [
       { points: 4_000, items: ['Meteor handling & speed blades'] },
       { points: 6_500, items: ['Sovereign IP-30 power plant'] },
       { points: 10_000, items: ['P8-SC Echo SMG'] },
-    ],
-    contracts: [
-      {
-        name: 'Orange Lvl. RSI Ship Under Attack',
-        points: 417,
-        label: 'Bring a crew',
-        notes:
-          'Expect three heavy fighters plus support, and a damaged friendly ship. Bring strong combat ships and gunners; the guide suggests a Perseus or Paladin.',
-      },
-      {
-        name: 'Yellow Lvl. Support Ship',
-        points: 146,
-        label: 'Solo-friendly',
-        notes:
-          'Two starter-class hostiles. About five minutes per run, with no specific ship requirement. Roughly six hours to finish this track from zero.',
-      },
     ],
   },
 ];
