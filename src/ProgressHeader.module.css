@@ -1,0 +1,105 @@
+.header {
+  position: fixed;
+  z-index: 10;
+  inset: 0 0 auto;
+  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  box-shadow: 0 0.5rem 1.5rem
+    color-mix(in srgb, var(--color-background) 70%, transparent);
+}
+
+.trackers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  width: min(1248px, calc(100% - 4rem));
+  margin-inline: auto;
+  padding-block: 0.8rem;
+}
+
+.tracker {
+  display: grid;
+  min-width: 0;
+  gap: 0.2rem;
+  border-radius: 2px;
+
+  &:hover {
+    background: var(--color-panel-raised);
+  }
+}
+
+.name {
+  color: var(--summary-color);
+  font-size: 0.72rem;
+}
+
+.points {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.cap {
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  height: 4px;
+  margin-block: 0.4rem 0.2rem;
+  border-radius: 1px;
+  background: var(--color-track);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--summary-color);
+}
+
+.milestone {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 10px;
+  border: 1px solid var(--color-muted);
+  border-radius: 1px;
+  background: var(--color-panel);
+  transform: translate(-50%, -50%);
+
+  &[data-unlocked='true'] {
+    border-color: var(--summary-color);
+    background: var(--summary-color);
+  }
+
+  &:last-child {
+    transform: translate(-100%, -50%);
+  }
+}
+
+@media (width <= 600px) {
+  .trackers {
+    gap: 0.65rem;
+    width: calc(100% - 2.5rem);
+    padding-block: 0.65rem;
+  }
+
+  .name {
+    font-size: 0.63rem;
+  }
+
+  .points {
+    font-size: 0.95rem;
+  }
+
+  .cap {
+    display: none;
+  }
+}

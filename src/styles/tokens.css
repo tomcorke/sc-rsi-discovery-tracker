@@ -1,5 +1,19 @@
 :root {
-  --color-background: #f5f7fa;
-  --color-text: #192432;
-  --f-body: system-ui, sans-serif;
+  color-scheme: dark;
+  --color-background: #080f19;
+  --color-panel: #0d1724;
+  --color-panel-raised: #111e2d;
+  --color-text: #eaf2fa;
+  --color-muted: #94a6bb;
+  --color-border: #203044;
+  --color-border-strong: #3d5066;
+  --color-track: #26384a;
+  --color-cyan: #79d8eb;
+  --color-transport: #79c8ff;
+  --color-collection: #6ed9ba;
+  --color-defense: #ecad7f;
+  --color-gold: #e4c17c;
+  --color-focus: #d7f6ff;
+  --f-body: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --f-display: 'Bahnschrift', 'DIN Alternate', 'Segoe UI', sans-serif;
 }
