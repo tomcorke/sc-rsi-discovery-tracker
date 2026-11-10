@@ -1,5 +1,13 @@
 # Project boundaries
 
-This repository owns the browser application. Sourced Star Citizen research belongs in the separate `star-citizen-knowledge-base` repository; consult its maintained notes when implementing game or pledge-store claims.
+This repository owns the browser application. Reusable Star Citizen research belongs in the local knowledge-base project at `E:/working/star-citizen-knowledge-base`. Use that absolute path from application worktrees; the knowledge base is a separate Git repository.
 
 Keep RSI account interactions read-only. Never commit account cookies, tokens, hangar exports, or browser profiles. Browser-delivered code and Vite environment variables are public to the browser user; keep credentials out of both.
+
+## Knowledge-base workflow
+
+1. Before researching or implementing Star Citizen game or pledge-store claims, read the knowledge base's `AGENTS.md` and `.agents/skills/star-citizen-search/SKILL.md`. Search its maintained notes and read the relevant topics before gathering more evidence.
+2. Whenever ongoing work uncovers new information, corrections, stale or conflicting evidence, or reusable user observations about Star Citizen, delegate a scoped research-and-record task to a subagent automatically. Do this as findings arise, without waiting for a separate user request. Give the subagent the knowledge-base path, findings, source URLs, relevant application context, and open questions. Require it to read and follow the knowledge base's `AGENTS.md`, `.agents/skills/star-citizen-research/SKILL.md`, and `knowledge/AGENTS.md` before editing.
+3. Have the subagent verify and update the maintained topics and related references using the knowledge base's conventions. Preserve source URLs, actual check dates, relevant game/build/store/account scope, and uncertainty. Keep user observations attributed until corroborated. Keep application implementation details in this repository; record reusable domain findings in the knowledge base.
+4. Require the subagent to commit its scoped knowledge-base updates automatically and complete that repository's prescribed branch/worktree, validation, integration, and search-index workflow. This is standing authorization for local research commits and integration; push only when explicitly requested. Preserve unrelated changes and serialize knowledge-base writers and integration so agents cannot race on shared files, Git state, or the search index.
+5. Before declaring the related application task complete, collect the subagent's changed note paths, commit SHA, and unresolved evidence or validation problems; verify that the findings are recorded in the knowledge base. Skip empty commits when existing notes already cover the findings. If the knowledge base or a required step is unavailable, report the blocker and qualify any dependent claims rather than silently omitting the research record.
